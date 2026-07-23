@@ -55,21 +55,13 @@ Token/compute cost if visible:
 ## RUN B — Claude Code, plain   (branch: bench/claude-plain)
 
 ```
-Model used (should be: Sonnet 5, via /model sonnet):
-Wall time (start → green build+tests):
-Setup time (none expected):
-Manual interventions (count + one line each):
-Build failures during the run (count):
-Hallucinated APIs / wrong overloads (count + example):
-Oscillation / thrash episodes (count + where):
-End state — bench-baseline.sh output:
-Defects found in 30-min diff review (count + severity):
-Did it update global.json? (Y/N):
-Subjective code-quality notes:
-What it did BEST:
-Where it clearly lost:
-Token/compute cost if visible:
-📸 Screenshots captured (for flagship post too):
+Model used: Sonnet 5, high thinking (confirm it matched)
+Wall time: 5m 29s
+Interventions: (autonomous, or did you step in?)
+Build failures during run: (the 5 FastEndpoints errors it fixed)
+End state: net10.0 ×5, build 0 err / 6 warn, tests 12/12
+global.json: Yes
+Notable: flagged NU1903 vuln but deferred it as out-of-scope (vs Copilot fixing it)
 ```
 
 ## RUN C — Claude Code + 12-layer guardrails   (branch: bench/claude-guarded)

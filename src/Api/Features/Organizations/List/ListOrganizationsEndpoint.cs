@@ -15,6 +15,6 @@ public sealed class ListOrganizationsEndpoint(OrganizationService service)
     public override async Task HandleAsync(CancellationToken ct)
     {
         var organizations = await service.ListAsync(ct);
-        await SendAsync(organizations, cancellation: ct);
+        await Send.OkAsync(organizations, ct);
     }
 }
