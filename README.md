@@ -1,4 +1,13 @@
-# SaaS Platform API
+# SaaS Platform API — .NET 8 → 10 migration benchmark
+
+> **This repo is the fixed baseline for a reproducible migration benchmark.** The `master`
+> branch is a green .NET 8 solution; three `bench/*` branches each migrate it to .NET 10 a
+> different way — GitHub Copilot modernize-dotnet, plain Claude Code, and Claude Code under
+> the twelve-layer guardrail system. Every run starts from the identical baseline commit, so
+> the results are comparable and anyone can reproduce them. Method and numbers:
+> [the write-up](https://codemajesty.tech/blog/github-copilot-modernize-dotnet-vs-claude-code-honest-take).
+> Run `./bench-baseline.sh` on any branch to print its build/test/LOC state; `RESULTS.md`
+> holds the per-run notes.
 
 A small but production-shaped multi-tenant SaaS backend built on **.NET 8**. It models the
 core of a subscription business — **Organizations**, their **Users**, and a per-organization
