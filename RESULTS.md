@@ -18,11 +18,25 @@ tests      : passed 12 / failed 0 / total 12
 
 Migration target: **.NET 10** (all projects → net10.0, packages → 10.x, global.json bumped, build + 12 tests green).
 
+### Model control (read first — this is what keeps the benchmark honest)
+
+This benchmark compares **tooling + process**, not underlying models. Copilot and Claude
+Code are both harnesses; the model is a separate variable we hold constant.
+
+- **Pin Claude Sonnet 5 as the main model in every run you can.**
+- Runs B and C both run flat Sonnet 5 (`/model sonnet`) — so the ONLY difference between
+  them is the guardrail system. Model tiering (Opus-for-planning, layer 7) is deliberately
+  LEFT OFF Run C's headline config so there's no "smarter model" confound.
+- Run A: select Claude Sonnet in Copilot if its modernize agent exposes a model picker.
+  If it doesn't, use whatever it defaults to and **record that model exactly** below.
+- Record the exact model + tier each run actually used. Non-negotiable.
+
 ---
 
 ## RUN A — GitHub Copilot modernize-dotnet   (branch: bench/copilot)
 
 ```
+Model used (record EXACTLY — e.g. "Claude Sonnet via Copilot picker" or "GPT-5 default, picker not honored"):
 Wall time (start → green build+tests):
 Setup time (tooling/extension):
 Manual interventions (count + one line each):
@@ -41,6 +55,7 @@ Token/compute cost if visible:
 ## RUN B — Claude Code, plain   (branch: bench/claude-plain)
 
 ```
+Model used (should be: Sonnet 5, via /model sonnet):
 Wall time (start → green build+tests):
 Setup time (none expected):
 Manual interventions (count + one line each):
@@ -60,6 +75,7 @@ Token/compute cost if visible:
 ## RUN C — Claude Code + 12-layer guardrails   (branch: bench/claude-guarded)
 
 ```
+Model used (should be: Sonnet 5, via /model sonnet — same as Run B; tiering OFF for a clean comparison):
 Wall time (start → green build+tests):
 Setup time (instrumentation — report honestly, counts separately):
 Manual interventions (count + one line each):
