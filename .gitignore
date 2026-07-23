@@ -1,0 +1,22 @@
+# .NET build output
+bin/
+obj/
+
+# Rider / VS
+.vs/
+.idea/
+*.user
+*.suo
+
+# Test results
+[Tt]est[Rr]esults/
+*.trx
+*.coverage
+
+# SQLite local database files (schema lives in EF migrations)
+*.db
+*.db-shm
+*.db-wal
+
+# OS
+.DS_Store
