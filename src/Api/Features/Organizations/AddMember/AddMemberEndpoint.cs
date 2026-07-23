@@ -23,6 +23,6 @@ public sealed class AddMemberEndpoint(OrganizationService service)
             new AddMemberRequest(req.Email, req.FullName, req.Role),
             ct);
 
-        await SendAsync(dto, StatusCodes.Status201Created, ct);
+        await Send.ResponseAsync(dto, StatusCodes.Status201Created, ct);
     }
 }

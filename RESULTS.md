@@ -36,20 +36,13 @@ Code are both harnesses; the model is a separate variable we hold constant.
 ## RUN A — GitHub Copilot modernize-dotnet   (branch: bench/copilot)
 
 ```
-Model used (record EXACTLY — e.g. "Claude Sonnet via Copilot picker" or "GPT-5 default, picker not honored"):
-Wall time (start → green build+tests):
-Setup time (tooling/extension):
-Manual interventions (count + one line each):
-Build failures during the run (count):
-Hallucinated APIs / wrong overloads (count + example):
-Oscillation / thrash episodes (count + where):
-End state — bench-baseline.sh output:
-Defects found in 30-min diff review (count + severity):
-Did it update global.json? (Y/N):
-Subjective code-quality notes:
-What it did BEST:
-Where it clearly lost:
-Token/compute cost if visible:
+- Model used: Claude Sonnet 5 (1M context), high thinking — via Copilot modernize-dotnet's model picker
+- Wall time: 6m 13s
+- Interventions: (did you touch anything, or fully autonomous?)
+- Build failures during the run: it hit 5 (the FastEndpoints SendAsync→Send.OkAsync breaking change) and self-recovered — worth noting exactly that
+- global.json updated: ✅ Yes (→ 10.0.102)
+- What it did best: caught the FastEndpoints v6+ breaking change and proactively fixed the transitive SQLitePCLRaw security vuln (NU1903) — that's genuinely impressive, concede it in the post
+- End state: net10.0 ×5, build 0/0, tests 12/12
 ```
 
 ## RUN B — Claude Code, plain   (branch: bench/claude-plain)
