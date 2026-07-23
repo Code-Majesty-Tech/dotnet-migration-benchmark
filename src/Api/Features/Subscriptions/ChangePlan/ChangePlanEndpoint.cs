@@ -19,6 +19,6 @@ public sealed class ChangePlanEndpoint(SubscriptionService service)
     public override async Task HandleAsync(Request req, CancellationToken ct)
     {
         var dto = await service.ChangePlanAsync(req.OrganizationId, new ChangePlanRequest(req.Plan), ct);
-        await SendAsync(dto, cancellation: ct);
+        await Send.OkAsync(dto, ct);
     }
 }

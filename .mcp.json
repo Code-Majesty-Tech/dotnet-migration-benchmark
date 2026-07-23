@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "roslyn": {
+      "command": "dotnet",
+      "args": ["/Users/vvu/Projects/dotnet-mcp-starter/bin/Release/net10.0/publish/RoslynMcpStarter.dll"],
+      "timeout": 30000
+    }
+  }
+}

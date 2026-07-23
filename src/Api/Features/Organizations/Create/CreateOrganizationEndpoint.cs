@@ -27,6 +27,6 @@ public sealed class CreateOrganizationEndpoint(OrganizationService service)
     public override async Task HandleAsync(CreateOrganizationRequest req, CancellationToken ct)
     {
         var dto = await service.CreateAsync(req, ct);
-        await SendAsync(dto, StatusCodes.Status201Created, ct);
+        await Send.ResponseAsync(dto, StatusCodes.Status201Created, ct);
     }
 }

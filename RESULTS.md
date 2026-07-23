@@ -75,21 +75,20 @@ Token/compute cost if visible:
 ## RUN C — Claude Code + 12-layer guardrails   (branch: bench/claude-guarded)
 
 ```
-Model used (should be: Sonnet 5, via /model sonnet — same as Run B; tiering OFF for a clean comparison):
-Wall time (start → green build+tests):
-Setup time (instrumentation — report honestly, counts separately):
-Manual interventions (count + one line each):
-Build failures during the run (count):
-Hallucinated APIs / wrong overloads (count + example):
-Oscillation / thrash episodes (count + where — did the hook fire?):
-End state — bench-baseline.sh output:
-Defects found in 30-min diff review (count + severity):
-Did it update global.json? (Y/N):
-Subjective code-quality notes:
-What it did BEST:
-Where it clearly lost:
-Token/compute cost if visible:
-📸 Screenshots captured (gate/hook firing = gold):
+Model used      : Claude Sonnet 5, high thinking (/model sonnet) — tiering OFF, same as Run B
+Wall time       : 6m 31s
+Setup time      : SIGNIFICANT — MCP server wouldn't start under the repo's global.json pin;
+                  required switching .mcp.json from `dotnet run --project` to the built DLL
+                  (dotnet run resolved SDK 8.0.423 from cwd and couldn't build the net10 server).
+                  ~2m of debugging before the guarded run could start.
+Interventions   : fully autonomous
+Build failures during run : 1
+Hallucinated APIs / wrong overloads : none — verified FastEndpoints signatures by reflection
+Oscillation / thrash episodes       : none observed
+Hooks fired?    : Yes, one, investigation-gate hook
+End state       : TFMs net10.0 ×5 | build 0 warnings / 0 errors | tests 12/12 | LOC 1522
+global.json updated : YES → 10.0.102
+Defects in 30-min diff review : [You fill this shit]
 ```
 
 ---

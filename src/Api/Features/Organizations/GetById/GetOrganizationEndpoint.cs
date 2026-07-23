@@ -18,6 +18,6 @@ public sealed class GetOrganizationEndpoint(OrganizationService service)
     public override async Task HandleAsync(GetOrganizationRequest req, CancellationToken ct)
     {
         var dto = await service.GetByIdAsync(req.Id, ct);
-        await SendAsync(dto, cancellation: ct);
+        await Send.OkAsync(dto, ct);
     }
 }
