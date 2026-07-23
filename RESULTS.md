@@ -88,7 +88,7 @@ Oscillation / thrash episodes       : none observed
 Hooks fired?    : Yes, one, investigation-gate hook
 End state       : TFMs net10.0 ×5 | build 0 warnings / 0 errors | tests 12/12 | LOC 1522
 global.json updated : YES → 10.0.102
-Defects in 30-min diff review : [You fill this shit]
+Defects in 30-min diff review : [You fill it]
 ```
 
 ---
